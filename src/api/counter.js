@@ -1,14 +1,11 @@
-export const increaseCounter = () => {
-  return fetch(`${import.meta.env.VITE_NODE_APP_URL}`, {
-    headers: {
-      'Content-Type': 'application/json'
-    },
+import axios from "axios";
+
+export const increaseCounter = async () => {
+
+  const resp = await axios({
     method: 'post',
-    body: JSON.stringify({ instanceID: `${import.meta.env.VITE_INSTANCE_ID}` })
-  }).then((response) => {
-    return response.json();
-  })
-    .catch((error) => {
-      throw error
-    });
+    url: '/api',
+    data: { instanceID: `${import.meta.env.VITE_INSTANCE_ID}` }
+  });
+  return resp.data;
 };
