@@ -7,19 +7,20 @@ import { increaseCounter } from '../src/api/counter'
 
 function App() {
   const [counter, setCounter] = useState(0)
-  const [instanceID,setInstanceID] = useState("")
+  const [instanceID, setInstanceID] = useState("")
   const [fetched, setFetched] = React.useState(false);
 
   async function getCounter() {
-    const instanceData = await increaseCounter();
-    console.log(instanceData);
-    setCounter(instanceData.counter);
-    setInstanceID(instanceData.instanceId);
-    setFetched(true);
+    if (!fetched) {
+      const instanceData = await increaseCounter();
+      setCounter(instanceData.counter);
+      setInstanceID(instanceData.instanceId);
+      setFetched(true);
+    }
   }
 
   useEffect(() => {
-    setTimeout(async () => getCounter(), 20);
+    setTimeout(async () => getCounter(), 1);
   }, []);
 
   if (!fetched) {
@@ -31,39 +32,22 @@ function App() {
   }
 
   return <>
+    <div>
       <div>
-        Counter: {counter}
-        <br />
-        Instance ID: {instanceID}
-        <br />
-        <img src={reactLogo} className="logo react" alt="React logo" />
+        Counter:
       </div>
-    </>
-
-  // return (
-  //   <>
-  //     <div>
-  //       <a href="https://vitejs.dev" target="_blank">
-  //         <img src={viteLogo} className="logo" alt="Vite logo" />
-  //       </a>
-  //       <a href="https://react.dev" target="_blank">
-  //         <img src={reactLogo} className="logo react" alt="React logo" />
-  //       </a>
-  //     </div>
-  //     <h1>Vite + React</h1>
-  //     <div className="card">
-  //       <button onClick={() => setCount((count) => count + 1)}>
-  //         count is {count}
-  //       </button>
-  //       <p>
-  //         Edit <code>src/App.jsx</code> and save to test HMR
-  //       </p>
-  //     </div>
-  //     <p className="read-the-docs">
-  //       Click on the Vite and React logos to learn more
-  //     </p>
-  //   </>
-  // )
+      <h4 id="counter">
+        {counter}
+      </h4>
+      <div>
+        Instance ID:
+      </div>
+      <h5 id="instance-id">
+        {instanceID}
+      </h5>
+      <img src={reactLogo} className="logo react" alt="React logo" />
+    </div>
+  </>
 }
 
 export default App
