@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import logo from '/crest.svg'
 import { increaseCounter } from '../src/api/counter'
 
 function App() {
@@ -46,7 +44,7 @@ function App() {
       <h5 id="instance-id">
         {instanceID}
       </h5>
-      <img src={reactLogo} className="logo react" alt="React logo" />
+      <img src={logo} className="logo react" />
     </div>
   </>
 }
