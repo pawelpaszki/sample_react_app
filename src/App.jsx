@@ -15,6 +15,7 @@ function App() {
       const instanceData = await increaseCounter();
       setCounter(instanceData.counter);
       setInstanceID(instanceData.instanceId);
+      console.log(`fetched from db: counter value: '${instanceData.counter}', instance ID: '${instanceData.instanceId}'`);
       setFetched(true);
     }
   }
