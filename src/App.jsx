@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from 'react'
-import logo from '/crest.svg'
+import logo from './crest.svg'
 import { increaseCounter } from '../src/api/counter'
 
 function App() {
