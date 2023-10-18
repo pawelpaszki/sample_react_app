@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from 'react'
+import { useState, useEffect } from "react";
 import logo from './crest.svg'
 import './App.css'
 import { increaseCounter } from '../src/api/counter'
@@ -7,7 +6,7 @@ import { increaseCounter } from '../src/api/counter'
 function App() {
   const [counter, setCounter] = useState(0)
   const [instanceID, setInstanceID] = useState("")
-  const [fetched, setFetched] = React.useState(false);
+  const [fetched, setFetched] = useState(false);
 
   async function getCounter() {
     if (!fetched) {
